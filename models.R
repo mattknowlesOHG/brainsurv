@@ -80,10 +80,10 @@ plot_independent_models$PFS
 # Test closeness of a fit
 
 independent_models %>%
-  filter(treatment == "AF", 
-         Distribution == "Generalized gamma", 
+  filter(
+         Distribution == "Log-logistic", 
          outcome == "OS" | outcome == "PFS") %>%
-  plot(time = 120, color.by = "outcome", linetype.model = "solid", linetype.observed = "dashed")
+  plot(time = 120, color.by = "outcome", linetype.model = "solid", linetype.observed = "dashed", facet.by = "treatment")
 
 
 # Model selection
