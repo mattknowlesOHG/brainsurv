@@ -91,8 +91,19 @@ independent_models %>%
 model_summary <- summary(independent_models) %>% 
   format_doubles()
 
-model_summary %>% 
-  filter(outcome == "OS") %>% 
-  select(-outcome)
+#AIC/BIC Testing
 
-create_table(model_summary, groups = "outcome", type = "flextable")
+model_summary %>% 
+  filter(outcome == "PFS") %>% 
+  select(-outcome) %>% 
+  filter(treatment == "PC")
+
+create_table(head(model_summary), groups = "outcome", type = "flextable")
+
+# Smoothed hazard curves
+
+independent_models %>% 
+  filter(outcome == "PFS") %>% 
+  plot(time = 50, type = "hazard", facet.by = "treatment", color.by = "Distribution", color.observed = "black",
+       linetype.model = "solid", linetype.observed = "dashed", ylim = c(0,0.5))
+
