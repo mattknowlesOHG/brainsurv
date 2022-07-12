@@ -28,13 +28,6 @@ TTE(DF) %>%
   plot_schoenfeld_residuals(covariates = c("treatment"), color = OH_pink, show.test.statistics = TRUE)
 
 
-
-
-
-
-
-
-
 #Declare list of distributions
 dists <- list(
   "Exponential"       = "exp",
@@ -107,3 +100,20 @@ independent_models %>%
   plot(time = 50, type = "hazard", facet.by = "treatment", color.by = "Distribution", color.observed = "black",
        linetype.model = "solid", linetype.observed = "dashed", ylim = c(0,0.5))
 
+# Splines
+
+distributions <- list(
+  "Log-logistic" = "llogis",
+  "Spline hazard 1" = list("spline", list(k = 1, scale = "hazard"))
+)
+
+spline_mod <- (TTE(DF)) %>%
+  fit_distribution(distributions, formula = "treatment")
+
+spline_plot <- spline_mod %>%
+  plot(time = 120, color.by = "treatment", 
+       facet.by = "Distribution", 
+       linetype.observed = "dashed",
+       linetype.model = "solid")
+
+spline_plot
