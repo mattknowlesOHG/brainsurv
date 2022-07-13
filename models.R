@@ -78,6 +78,10 @@ independent_models %>%
          outcome == "OS" | outcome == "PFS") %>%
   plot(time = 120, color.by = "outcome", linetype.model = "solid", linetype.observed = "dashed", facet.by = "treatment")
 
+# Get parameters of distribution
+
+sl_distr_params(independent_models)
+
 
 # Model selection
 
@@ -117,3 +121,4 @@ spline_plot <- spline_mod %>%
        linetype.model = "solid")
 
 spline_plot
+
