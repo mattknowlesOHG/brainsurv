@@ -123,3 +123,7 @@ spline_plot <- spline_mod %>%
 
 spline_plot
 
+# VarCoVar Matrix
+
+vcov_independent <- variance_covariance(independent_models, cholesky = TRUE) %>%
+  dplyr::arrange(outcome)
