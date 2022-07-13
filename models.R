@@ -2,6 +2,7 @@ library(MMAsurvival)
 library(dplyr)
 library(OHplot)
 library(ggplot2)
+library(MMAITC)
 theme_set(OH_style())
 
 # Load Data
