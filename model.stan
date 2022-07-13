@@ -1,7 +1,7 @@
 // The input data is a vector 'y' of length 'N'.
 data {
   int<lower=0> N;
-  vector[N] y;
+  vector[N] Y;
 }
 
 // The parameters accepted by the model. Our model
@@ -15,6 +15,8 @@ parameters {
 // 'y' to be normally distributed with mean 'mu'
 // and standard deviation 'sigma'.
 model {
-  y ~ lognormal(mu, sigma);
+  Y ~ lognormal(mu, sigma);
+  //mu ~ normal(1,1);
+  //sigma ~ cauchy(0,1);
 }
 
