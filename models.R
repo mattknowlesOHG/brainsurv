@@ -108,8 +108,8 @@ independent_models %>%
 # Splines
 
 distributions <- list(
-  "Log-logistic" = "llogis",
-  "Spline hazard 1" = list("spline", list(k = 1, scale = "hazard"))
+  #"Log-logistic" = "llogis",
+  "Spline hazard 1" = list("spline", list(k = 3, scale = "hazard"))
 )
 
 spline_mod <- (TTE(DF)) %>%
@@ -125,5 +125,5 @@ spline_plot
 
 # VarCoVar Matrix
 
-vcov_independent <- variance_covariance(independent_models, cholesky = TRUE) %>%
+vcov_independent <- variance_covariance(independent_models, cholesky = FALSE) %>%
   dplyr::arrange(outcome)
